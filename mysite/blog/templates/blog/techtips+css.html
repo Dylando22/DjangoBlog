@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>+CSS</title>
+
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+
+
+    </head>
+    <body>
+        <h1>TechTips+CSS</h1>
+        
+        <h2> Separate links: </h2>
+        <div class="links">
+            <h2> Separate links: </h2>
+            <p><a href="{% url 'blog:about' %}">About me</a></p>
+            <p> <a href="{% url 'blog:index' %}">Home Page</a> </p>
+            <p> <a href="{% url 'blog:plan' %}">Software Development Plan</a> </p>
+            <p> <a href="{% url 'blog:techtips+css' %}">Html Tech Tips</a> </p>
+            <p> <a href="{% url 'blog:techtips-css' %}">Html Tech Tips without CSS</a> </p>
+            <p> <a href="{% url 'blog:archive' %}">Archives</a></p>
+
+        </div>
+
+        <div>
+            <p>User: {{ visitor.who }} is visiting this page at {{now}}</p>
+        </div>
+
+        <div class="cheatsheet" style="background-color: darkblue;">
+            <h2>HTML Elements</h2>
+            <p id="htmlintro"><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">&lt;html&gt;</a></p>
+            <ul>
+                <li>usually found at the top of the file and has closing tag at the end.</li>
+                <li>Describes a file type to be HTML</li>
+                <li>The start tag may be omitted if the first thing inside the &lt;html&gt; element is not a comment.</li>
+                <li>The end tag may be omitted if the &lt;html&gt; element is not immediately followed by a comment.</li>
+                <li>Used in standard HTML practices</li>
+                <li>To learn more, Click the tag above</li>
+            </ul>
+            <p><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt; .... &lt;h6&gt;</a></p>
+            <ul>
+                <li>Header Tags make different sizes of headers for titles and headers on a web page</li>
+                <li>usually found at the top of the file and has closing tag at the end.</li>
+                <li>6 different sizes used as tags h1-h6 with h1 being the biggest</li>
+                <li>Header tags are inline level elements</li>
+                <li>To learn more, Click the tag above</li>
+            </ul>
+            <p><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p">&lt;p&gt;</a></p>
+
+            <ul>
+                <li>The &lt;p&gt; HTML element represents a paragrap</li>
+                <li>It is a block level element</li>
+                <li>Can be used with margins and padding to create areas/blocks of content.</li>
+                <li>To learn more, Click the tag above</li>
+            </ul>
+
+            <p><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">&lt;title&gt;</a></p>
+            <ul>
+                <li>The &lt;title&gt; HTML element is used in the head of an html file and defines the document's title that is 
+                    displayed in the address bar. 
+                </li>
+                <li>It is neither an inline nor a block level element</li>
+                <li>Only contains text inside the tags, all other tags will be ignored</li>
+                <li>To learn more, Click the tag above</li>
+            </ul>
+        </div>
+
+        <div class="cheatsheet" style="background-color: rgb(0, 139, 19);">
+            <h2>HTML HTML Character Entities</h2>
+            <p>& l t ; = &lt; Adding these characthers without a space makes the less than sign</p>
+            <ul>
+                <li>Used for math expressions </li>
+                <li>Use in tags when writting HTML, but when attempting to put the &lt; character in text, there is an error in the code for an
+                    incomplete tag. So this character entity is useful. 
+                </li>
+            </ul>
+
+            <p >& g t ; = &gt; Adding these characthers without a space makes the greater than sign</p>
+            <ul>
+                <li>Used for math expressions</li>
+                <li>Use in tags when writting HTML, but when attempting to put the &gt; character, there is an error in the code for an
+                    incomplete tag. So this character entity is useful. </li>
+            </ul>
+
+            <p >& quot ; = &quot; Adding these characthers without a space maske a double quotation marks symbol</p>
+            <ul>
+                <li>Used when quoting somone.</li>
+                <li>Use when declaring an attribute when writting HTML, but when attempting to put the &lt; character in text, there is an error in the code for an
+                    incomplete attribute assignemt. So this character entity is useful. </li>
+            </ul>
+
+        </div>
+
+        <div class="cheatsheet" style="background-color: rgb(139, 21, 0);">
+            <h2>CSS Selectors</h2>
+            <p >element</p>
+            <ul>
+                <li>The element selector allows you to define CSS declarations that happen every time a certin 
+                    element appears in a html document. 
+                </li>
+                <li>For example, if you wanted every &lt;p&gt; to be blue, you could make a selector for &lt;p&gt; with
+                    color: blue; in it.  </li>
+            </ul>
+            <p >.class</p>
+            <ul>
+                <li>The .class selector allows you to describe how any element should look in an html document. This means you can change the appearnce, from the already 
+                    established declarations by adding class= "classname" in the tag.
+                </li>
+                <li>You can change any stye elements in a .class selector</li>
+            </ul>
+            <p >#id</p>
+            <ul>
+                <li>The #id element is like the .class element. It allows you to specifiy CSS declarations for 
+                    any tag that has the id referenced in it. However, #id's can also be used inside classes.
+
+                </li>
+                <li>The #id is declared by using # following the name of the id, for example #intro</li>
+                <li>The #id is declared in a html tag with id="tagname" </li>
+            </ul>
+            <p >:nth-child</p>
+            <ul>
+                <li>The :nth-child(n) selector matches every element that is the nth child, regardless of type, of its parent.</li>
+                <li>The n can be a number, keyword, or a formula</li>
+                <li>This allows children elements to look or be defined different from each other. </li>
+                <li>ex. p:nth-child(2) { background: red; } will make every element that is the 2nd child of &lt;p&gt; red. </li>
+            </ul>
+        </div>
+
+        <div class="cheatsheet" style="background-color: rgb(139, 0, 127);">
+            <h2>CSS Properties</h2>
+            <p >background-color</p>
+            <ul>
+                <li>background-color allows you to change what color the background behind the text.</li>
+                <li>The background-color will change the background of the entire space that the text takes up, so for block elements, it will be the
+                    whole block, and for inline it will change the line. 
+                </li>
+                <li>There are many built in colors, like red, orangred, lightgreen, and almost anything you can think of. </li>
+                <li>There is also the option to choose your own combination of rgb() to make any color available.</li>   
+            </ul>
+                <p >font-family</p>
+            <ul>
+                <li>font-family is used with the style element and allows you to chooes what font the text looks like.</li>
+                <li>Some font families are singular, like monospace and cursive </li>
+                <li>Others contain a family of fonts, like: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif</li>
+            </ul>
+            <p >font-size</p>
+            <ul>
+                <li>font-size changes the size of the font of a text</li>
+                <li>You can change the font size to be bigger or smaller and just put in the number with the units after it,
+                    for example, font-size: 35pt;
+                </li>
+                <li>It is recommended to use headers instead of changing the font size for titles and sections of text. </li>
+            </ul>
+            <p >margin</p>
+            <ul>
+                <li>margin sets the margin for all four sides of an element</li>
+                <li>
+                    ex. margin: 35px (set it to 35 pixles)
+                </li>
+                <li>There are also the options to set only one side of an element, by using the property
+                    margin-top, margin-right, margin-left, or margin-bottom.
+                </li>
+            </ul>
+        </div>
+        
+    </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>-CSS</title>
+    </head>
+
+    <body style="font-family: Verdana, Geneva, Tahoma, sans-serif; background-color: rgb(48, 47, 47); font-size: medium; color: whitesmoke;">
+        <h1>TechTips-CSS</h1>
+        <h2> Separate links: </h2>
+        <div style=" background-color: rgb(250, 190, 69); font-family: Arial, Helvetica, sans-serif; color:wheat;">
+            <h2> Separate links: </h2>
+            <p><a href="{% url 'blog:about' %}">About me</a></p>
+            <p> <a href="{% url 'blog:index' %}">Home Page</a> </p>
+            <p> <a href="{% url 'blog:plan' %}">Software Development Plan</a> </p>
+            <p> <a href="{% url 'blog:techtips+css' %}">Html Tech Tips</a> </p>
+            <p> <a href="{% url 'blog:techtips-css' %}">Html Tech Tips without CSS</a> </p>
+            <p> <a href="{% url 'blog:archive' %}">Archives</a></p>
+
+        </div>
+
+        <div style="background-color: darkred;">
+            <p>User: {{ visitor.who }} is visiting this page at {{now}}</p>
+        </div>
+
+        <div style="background-color: darkblue; padding: 50px; margin: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <h2>HTML Elements</h2>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;"><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/html">&lt;html&gt;</a></p>
+            <ul>
+                <li style="background-color:darkolivegreen;">usually found at the top of the file and has closing tag at the end.</li>
+                <li style="background-color:darkslategray;">Describes a file type to be HTML</li>
+                <li style="background-color:darkolivegreen;">The start tag may be omitted if the first thing inside the &lt;html&gt; element is not a comment.</li>
+                <li style="background-color:darkslategray;">The end tag may be omitted if the &lt;html&gt; element is not immediately followed by a comment.</li>
+                <li style="background-color:darkolivegreen;">Used in standard HTML practices</li>
+                <li style="background-color:darkslategray;">To learn more, Click the tag above</li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;"><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements">&lt;h1&gt; .... &lt;h6&gt;</a></p>
+            <ul>
+                <li style="background-color:darkolivegreen;">Header Tags make different sizes of headers for titles and headers on a web page</li>
+                <li style="background-color:darkslategray;">usually found at the top of the file and has closing tag at the end.</li>
+                <li style="background-color:darkolivegreen;">6 different sizes used as tags h1-h6 with h1 being the biggest</li>
+                <li style="background-color:darkslategray;">Header tags are inline level elements</li>
+                <li style="background-color:darkolivegreen;">To learn more, Click the tag above</li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;"><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p">&lt;p&gt;</a></p>
+
+            <ul>
+                <li style="background-color:darkolivegreen;">The &lt;p&gt; HTML element represents a paragrap</li>
+                <li style="background-color:darkslategray;">It is a block level element</li>
+                <li style="background-color:darkolivegreen;">Can be used with margins and padding to create areas/blocks of content.</li>
+                <li style="background-color:darkslategray;">To learn more, Click the tag above</li>
+            </ul>
+
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;"><a style="color:white" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title">&lt;title&gt;</a></p>
+            <ul>
+                <li style="background-color:darkolivegreen;">The &lt;title&gt; HTML element is used in the head of an html file and defines the document's title that is 
+                    displayed in the address bar. 
+                </li>
+                <li style="background-color:darkslategray;">It is neither an inline nor a block level element</li>
+                <li style="background-color:darkolivegreen;">Only contains text inside the tags, all other tags will be ignored</li>
+                <li style="background-color:darkslategray;">To learn more, Click the tag above</li>
+            </ul>
+        </div>
+
+        <div class="cheatsheet" style="background-color: rgb(0, 139, 19); padding: 50px; margin: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <h2>HTML HTML Character Entities</h2>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">& l t ; = &lt; Adding these characthers without a space makes the less than sign</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">Used for math expressions </li>
+                <li style="background-color:darkslategray;">Use in tags when writting HTML, but when attempting to put the &lt; character in text, there is an error in the code for an
+                    incomplete tag. So this character entity is useful. 
+                </li>
+            </ul>
+
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">& g t ; = &gt; Adding these characthers without a space makes the greater than sign</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">Used for math expressions</li>
+                <li style="background-color:darkslategray;">Use in tags when writting HTML, but when attempting to put the &gt; character, there is an error in the code for an
+                    incomplete tag. So this character entity is useful. </li>
+            </ul>
+
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">& quot ; = &quot; Adding these characthers without a space maske a double quotation marks symbol</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">Used when quoting somone.</li>
+                <li style="background-color:darkslategray;">Use when declaring an attribute when writting HTML, but when attempting to put the &lt; character in text, there is an error in the code for an
+                    incomplete attribute assignemt. So this character entity is useful. </li>
+            </ul>
+
+        </div>
+
+        <div class="cheatsheet" style="background-color: rgb(139, 21, 0); padding: 50px; margin: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <h2>CSS Selectors</h2>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">element</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">The element selector allows you to define CSS declarations that happen every time a certin 
+                    element appears in a html document. 
+                </li>
+                <li style="background-color:darkslategray;">For example, if you wanted every &lt;p&gt; to be blue, you could make a selector for &lt;p&gt; with
+                    color: blue; in it.  </li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">.class</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">The .class selector allows you to describe how any element should look in an html document. This means you can change the appearnce, from the already 
+                    established declarations by adding class= "classname" in the tag.
+                </li>
+                <li style="background-color:darkslategray;">You can change any stye elements in a .class selector</li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">#id</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">The #id element is like the .class element. It allows you to specifiy CSS declarations for 
+                    any tag that has the id referenced in it. However, #id's can also be used inside classes.
+
+                </li>
+                <li style="background-color:darkslategray;">The #id is declared by using # following the name of the id, for example #intro</li>
+                <li style="background-color:darkolivegreen;">The #id is declared in a html tag with id="tagname" </li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">:nth-child</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">The :nth-child(n) selector matches every element that is the nth child, regardless of type, of its parent.</li>
+                <li style="background-color:darkslategray;">The n can be a number, keyword, or a formula</li>
+                <li style="background-color:darkolivegreen;">This allows children elements to look or be defined different from each other. </li>
+                <li style="background-color:darkslategray;">ex. p:nth-child(2) { background: red; } will make every element that is the 2nd child of &lt;p&gt; red. </li>
+            </ul>
+        </div>
+
+        <div class="cheatsheet" style="background-color: rgb(139, 0, 127); padding: 50px; margin: 25px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <h2>CSS Properties</h2>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">background-color</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">background-color allows you to change what color the background behind the text.</li>
+                <li style="background-color:darkslategray;">The background-color will change the background of the entire space that the text takes up, so for block elements, it will be the
+                    whole block, and for inline it will change the line. 
+                </li>
+                <li style="background-color:darkolivegreen;">There are many built in colors, like red, orangred, lightgreen, and almost anything you can think of. </li>
+                <li style="background-color:darkslategray;">There is also the option to choose your own combination of rgb() to make any color available.</li>   
+            </ul>
+                <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">font-family</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">font-family is used with the style element and allows you to chooes what font the text looks like.</li>
+                <li style="background-color:darkslategray;">Some font families are singular, like monospace and cursive </li>
+                <li style="background-color:darkolivegreen;">Others contain a family of fonts, like: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif</li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">font-size</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">font-size changes the size of the font of a text</li>
+                <li style="background-color:darkslategray;">You can change the font size to be bigger or smaller and just put in the number with the units after it,
+                    for example, font-size: 35pt;
+                </li>
+                <li style="background-color:darkolivegreen;">It is recommended to use headers instead of changing the font size for titles and sections of text. </li>
+            </ul>
+            <p style="font-family: monospace; font-size: 18pt; font-style: inherit;">margin</p>
+            <ul>
+                <li style="background-color:darkolivegreen;">margin sets the margin for all four sides of an element</li>
+                <li style="background-color:darkslategray;">
+                    ex. margin: 35px (set it to 35 pixles)
+                </li>
+                <li style="background-color:darkolivegreen;">There are also the options to set only one side of an element, by using the property
+                    margin-top, margin-right, margin-left, or margin-bottom.
+                </li>
+            </ul>
+        </div>
+        
+    </body>
+</html>

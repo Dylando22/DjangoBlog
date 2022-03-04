@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>SDP</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">    </head>
+
+    <body>
+        <h1>Software Development Plan</h1>
+
+        <div class="links">
+            <h2> Separate links: </h2>
+            <p><a href="{% url 'blog:about' %}">About me</a></p>
+            <p> <a href="{% url 'blog:index' %}">Home Page</a> </p>
+            <p> <a href="{% url 'blog:plan' %}">Software Development Plan</a> </p>
+            <p> <a href="{% url 'blog:techtips+css' %}">Html Tech Tips</a> </p>
+            <p> <a href="{% url 'blog:techtips-css' %}">Html Tech Tips without CSS</a> </p>
+            <p> <a href="{% url 'blog:archive' %}">Archives</a></p>
+        </div>
+
+        <div>
+            <p>User: {{ visitor.who }} is visiting this page at {{now}}</p>
+        </div>
+
+    <div style="background-color: rgb(148, 43, 125);">
+        <h2> Phase 0: Requirements Specification</h2>
+        <p>Data Flow and things to do:</p>
+        <ul>
+            <li>blog titles are links to pages that contain the blog post and a form with options to insert comments.</li>
+            <li>Every page is dynamic and has a timestamp for when the page was visited.</li>
+            <li>comments are in their own database</li>
+            <li>blog posts are in their own database as well</li>
+            <li>new archive page that has "archived" blogposts</li>
+        </ul>
+
+        <p> The problem is that we have all the html files and blog post site from the last two assigments, but they are not very useful. With django we will use databases and MVC to make it more usefull, where instead of hardcoding everything in HTML, we can add new blog posts and comments from the site itself.</p>
+
+        <p> A Good solution would be having each page update the timestamp when the page is refreshed and also make sure the data and comments stay even after the server is shut down and rebooted. This will be done in databases, hense using the model veiw controller design pattern. the data to send as HTTP headers.
+        </p>
+    </div>
+
+    <div style="background-color: rgb(61, 54, 126);">
+        <h2> Phase 1: System Analysis</h2>
+        <p>All data used by the program:</p>
+        <p> The data in the program comes from the databases and the user when new thing are inputted. The only times the user will input things are in the comments section, and this will be done with the html forms aspect. The other data will be the url path that the user is following to get to the correct page, but this can be done through html and the urls.py file.</p>
+
+        <p>Output: All the output should be in html files found in the templates section of the django framework.</p>
+
+        <p>Inputs: populate.py -- data that will be added to the database upon migration. Need 4 blog posts and 4 comments minimum</p>
+
+        <p>Algorithms and formulae:</p>
+
+        <div style="background-color: darkorange">
+            <p>Models:</p>
+                <br>BlogPosts(model.Model) - In the models sections, needs
+	                <br>    - title (CharField)
+	                <br>    - author (CharField)
+	                <br>    - content (TextField)
+	                <br>    - posted (DateTimeField)
+        </div>
+    <div style="background-color: darkpurple">
+    <br>Comments(model.Model)
+	<br>    - blog - ForeginKey
+	<br>    - commenter - CharField
+	<br>    - email - EmailField
+	<br>    - posted - DateTimeField
+     </div>
+        <div style="background-color: darkgreen">
+            <p>Add to every page:</p>
+		<br>- current date and time - timezone.now()
+		<br>- visitor ip address - request.META.get('REMOTE_ADDR")
+        </div>
+    </div>
+
+    <div style="background-color: rgb(173, 58, 58);" >
+        <h2> Phase 2: Design</h2>
+            <h4>Pages:</h4>
+            <p>Blog home (index.html)</p>
+            <ul>
+                <li>Use Posts database to get the 3 most recent blogposts and posts</li>
+                <li>title and number of comments</li>
+                <li>the first 100 words of the content. (post.content|truncatewords:100)</li>
+            </ul>
+
+            <p>Blog Archive (archive.html)</p>
+            <ul>
+                <li>Use Posts database to get all blogposts and posts</li>
+                <li>title and number of comments</li>
+                <li>the first 100 words of the content. (post.content|truncatewords:100)</li>
+            </ul>
+
+        <p>Blog Entry (entry.html)</p>
+            <ul>
+                <li>Use URL to determine which blog id to use</li>
+                <li>Use Posts database to get content and posts all the content.</li>
+                <li>Use comment databse to get all the comments assigned to the post and posts them.</li>
+                <li>Has an HTML form for new comments and when the save button is hit, it refreshes making the total number of comments increase.</li>
+            </ul>
+
+        <p>In blog templates:</p>
+            <ul>
+                <li><code>/index.html</code></li>
+                <li><code>/about.html</code></li>
+                <li><code>/plan.html</code></li>
+                <li><code>/techtips+css.html</code></li>
+                <li><code>/techtips-css.html</code></li>
+                <li><code>/entry.html</code></li>
+                <li><code>/archive.html</code></li>
+            </ul>
+
+        <p>Complete Functions:</p>
+        <div>
+            <p>BlogPosts Model:</p>
+            <ol>
+                <li>title = models.CharField(max_length=200)</li>
+                <li>author = models.CharField(max_length=200)</li>
+                <li>content = models.TextField(default="")</li>
+                <li>posted = models.DateTimeField('date published')</li>
+                <li>comment_count = models.IntegerField(default= 0)</li>
+            </ol>
+        </div>
+
+        <div>
+            <p>Comment Model:</p>
+            <ol>
+                <li>blog = models.ForeginKey(BlogPost, on_delete=models.CASCADE)</li>
+                <li>commenter = models.CharField(max_length=200)</li>
+                <li>content = models.TextField(default="")</li>
+                <li>email = models.EmailField(max_length=254)</li>
+                <li>posted = models.DateTimeField('date published')</li>
+            </ol>
+        </div>
+
+        <div>
+            <p>Visitors Model:</p>
+            <ol>
+                <li>who = models.CharField(max_length=127)</li>
+                <li>when = models.DateTimeField('date published')</li>
+            </ol>
+        </div>
+
+        <p>Views functions:</p>
+        <ul>
+            <li>recent_posts = BlogPost.objects.order_by('-posted')[:5] -- gets most recent blog posts</li>
+            <li>comments = Comment.objects.all() -- gets all comments given</li>
+            <li>data = Visitors(who=request.META['REMOTE_ADDR'],when=timezone.now()) -- Gets IP addres and time of page visits</li>
+        </ul>
+
+        <p>HTML form:</p>
+        <pre>
+
+            <form action="" method="">
+        {% csrf_token %}
+        <fieldset>
+        <ul>
+            <li>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+                </li>
+             <li>
+        <label for="mail">E-mail:</label>
+        <input type="email" id="mail" name="email">
+            </li>
+             <li>
+        <label for="msg">Comment:</label>
+        <textarea id="msg" name="message"></textarea>
+            </li>
+        </ul>
+            </fieldset>
+        <ul>
+             <li class="button">
+                 <button type="submit" value="Comment">Submit Comment</button>
+            </li>
+        </ul>
+    </form>
+
+        </pre>
+
+            <p>Bad Input: Any paths that are not in urls.py, This will reslut in a printing of the
+                ERROR 404 page not found or the django debugging page.
+            </p>
+
+            <p>Good Output: Good output will look the same for each request and will not have 
+                any syntax or coding errors. The pages will load and there will be dynamic data with date time and
+                ip addresses</p>
+
+            <p>Bad Output: Pages on the server not opening or loading for long periods of time. Images that
+                do not show up on the page, but only the name. Time stamps that do not update, or inacccurate 
+                system information printted. 
+            </p>
+
+            <p>Data Flow: The data should flow naturally when different web pages are being visited. The source of the data will come 
+            from the databases and is managed by the models and the views.
+            </p>
+
+        <p>
+            Basically how the MVC works is the model defines the data stored in the database tables, and the views describe how the data gets there. Then the views are used in html through the urls.py to show which information guys into which column of the tables.
+        </p>
+
+
+    </div>
+
+    <div style="background-color: darkgoldenrod">
+        <h2> Phase 3: Implementation</h2>
+        <h4>Expirence coding:</h4>    
+        <p>Worked on python code, everything went pretty good and according to plan with a little tweaking. I got everything running, except getting the information from the form to the database. I spent hours tinkering and trying to figure out what was wrong, and I figured out that I needed to go to a different url, "/comments" just to be redirected back to the entry page. Once I made that adjustment it worked smoothly. However, messing with everything and reading so much documentation trying to figure out what was wrong really helped me understand how django and the MVC works.
+        </p>
+        </div>
+
+    <div style="background-color: violet">   
+        <h2> Phase 4: Testing & Debugging</h2>
+
+        <p>Went to each page and saw the timestamp update when refreshing the page:</p>
+        <p>Once the form is submitted the comment updates and the number of comments updates on each page</p>
+        <p>Only shows 3 most recent posts on home page</p>
+        <p>After form is submitted, server makes post request and redirects to entry page.</p>
+        <p>Comments are ordered most recent to oldest</p>
+        <p>email field has to have an @ symbol to work</p>
+        <p>Ran files through <a href="https://validator.w3.org/nu/#file">W3C’s Markup Validation Service</a> during assn0 </p>
+    </div>
+
+    <div style="background-color: green">
+        <h2> Phase 5: Deployment</h2>
+        <p>Pushed up to getLab and verified submission.</p>
+    </div>
+
+    <div style="background-color: royalblue">
+        <h2> Phase 6: Maintenance</h2>
+        <p><strong>What parts of your program are sloppily written and hard to understand?</strong></p>
+        <p>The populate.py, Some of the html, the views.py
+        </p>
+
+        <p><strong>Will your documentation make sense to....
+            anybody besides yourself?
+            yourself in six month’s time?</strong></p>
+            <p>Yes, I think it is very self expalnatory. The tricky part would be remembering django syntax and where everyting is suppose to go</p>
+
+        <p><strong>How easy will it be to add a new feature to this program in a year?</strong></p>
+        <p>Fairly esay, I want to make another page where you can add a blog entry with a form.</p>
+
+        <p><strong>Will your program continue to work after upgrading
+            your computer’s hardware?
+            the operating system?
+            to the next version of Python?</strong></p> 
+            <p>Yes, Yes, and as long as django upadtes, yes.
+            </p>
+
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title>About Us</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
+    </head>
+
+    <body>
+        
+
+        <h1>About US</h1>
+        <img src="{% static 'blog/images/dylanSav.jpg'%}" alt="Picture of our first date" width="200" height="200"/>
+
+
+        <div class="links">
+            <h2> Separate links: </h2>
+            <p><a href="{% url 'blog:about' %}">About me</a></p>
+            <p> <a href="{% url 'blog:index' %}">Home Page</a> </p>
+            <p> <a href="{% url 'blog:plan' %}">Software Development Plan</a> </p>
+            <p> <a href="{% url 'blog:techtips+css' %}">Html Tech Tips</a> </p>
+            <p> <a href="{% url 'blog:techtips-css' %}">Html Tech Tips without CSS</a> </p>
+            <p> <a href="{% url 'blog:archive' %}">Archives</a></p>
+
+        </div>
+
+        <div>
+            <p>User: {{ visitor.who }} is visiting this page at {{now}}</p>
+        </div>
+
+        <div>
+            <p>Dylan and Savannah are 2 college students at Utah State University. Savannah is studying Elementary Education
+                and Dylan is studying computer science. They met at a USU football game in 2019, and were married in the summer of 2020/
+                They currently live in Logan, UT and recently got a new puppy named loki. Dylan loves soccer and Argentina, where he served his mission. 
+            </p>
+            <img src="{% static 'blog/images/loki.jpg'%}" alt="Picture of our puppy Loki" width="200" height="200"/>
+        
+        
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sit amet nisl suscipit adipiscing bibendum est ultricies integer quis. Semper quis lectus nulla at. In massa tempor nec
+                 feugiat nisl pretium fusce id. Pellentesque elit eget gravida cum sociis natoque penatibus et. Sit amet volutpat consequat mauris
+                 nunc congue nisi vitae. Quis eleifend quam adipiscing vitae proin sagittis nisl. Netus et malesuada fames ac turpis egestas sed
+                 tempus urna. Amet purus gravida quis blandit. Scelerisque purus semper eget duis at tellus at urna condimentum. Morbi
+                 tristique senectus et netus et malesuada fames ac turpis. Pharetra diam sit amet nisl suscipit adipiscing bibendum est. Commodo
+                 sed egestas egestas fringilla phasellus faucibus scelerisque. Egestas egestas fringilla phasellus faucibus scelerisque eleifend.
+                 Vulputate dignissim suspendisse in est ante in. Pharetra et ultrices neque ornare aenean euismod elementum nisi. Ullamcorper
+                 malesuada proin libero nunc consequat interdum varius. Faucibus purus in massa tempor nec feugiat. Magna fermentum iaculis eu non
+                 diam phasellus vestibulum lorem. Nibh tellus molestie nunc non.
+            </p>
+            <img src="{% static 'blog/images/argImg.jpg'%}" alt="Argentine flag" width="200" height="100"/>
+        
+            <p>
+                Urna cursus eget nunc scelerisque viverra mauris in aliquam. Sit amet aliquam id diam maecenas ultricies mi eget mauris. Dui sapien eget mi proin
+                 sed libero enim sed. Aliquam vestibulum morbi blandit cursus risus at ultrices. Imperdiet dui accumsan sit amet nulla facilisi morbi. Quam id leo
+                  in vitae. At in tellus integer feugiat scelerisque varius. Consectetur adipiscing elit ut aliquam purus sit amet luctus venenatis. Amet nisl suscipit
+                 adipiscing bibendum est. Non quam lacus suspendisse faucibus interdum. Interdum consectetur libero id faucibus nisl tincidunt eget nullam non. Euismod
+                 elementum nisi quis eleifend quam adipiscing vitae proin. Et malesuada fames ac turpis egestas integer. Tincidunt ornare massa eget egestas purus viverra
+                  accumsan in. Cursus sit amet dictum sit amet justo donec enim. Purus viverra accumsan in nisl nisi scelerisque eu. Massa sed elementum tempus egestas sed.
+        
+            </p>
+        
+                <img src= "{% static 'blog/images/temple.jpg'%}" alt="Wedding day " width="200" height="200"/>
+        
+        </div>
+
+    </body>
+</html>
